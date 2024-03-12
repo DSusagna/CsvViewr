@@ -4,6 +4,8 @@ import Model.InputModel;
 import View.InputView;
 import View.OutputView;
 
+import javax.swing.*;
+
 import static javax.swing.SwingUtilities.*;
 /**
  * File: Main.java
@@ -24,7 +26,7 @@ public class Main {
      */
     public static void main(String[] args) {
 
-        invokeLater(() -> {
+        SwingUtilities.invokeLater(() -> {
             InputModel inputModel = new InputModel();
             InputView inputView = new InputView();
             OutputView outputView = new OutputView();
@@ -32,7 +34,6 @@ public class Main {
             inputView.registerController(controller);
             inputView.start();
         });
-
 
     }
 }
