@@ -8,14 +8,22 @@ import java.awt.*;
 import java.util.ArrayList;
 
 
-
+/**
+ * The OutputView class represents the view component responsible for displaying the CSV data.
+ */
 public class OutputView extends JFrame {
 
+    /**
+     * Constructs a new OutputView.
+     */
+    public OutputView(){}
 
-    public OutputView(){
-    }
-
-
+    /**
+     * Displays the CSV data in a table format.
+     *
+     * @param rows The rows of data to display.
+     * @param file The name of the CSV file being displayed.
+     */
     public void printCsv(ArrayList<ArrayList<String>> rows,String file) {
 
         JFrame frame = new JFrame(file);
@@ -54,6 +62,9 @@ public class OutputView extends JFrame {
         frame.setVisible(true);
     }
 
+    /**
+     * Displays an error message indicating that the file path is incorrect.
+     */
     public void errorPath() {
         JOptionPane.showMessageDialog(this,
                 "Make sure the document is within the \"Files\" folder\n(.csv) extension is not necessary.",

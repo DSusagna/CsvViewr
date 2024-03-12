@@ -7,16 +7,32 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The CSVReader class is responsible for reading CSV files.
+ */
 public class CSVReader {
-
+    /**
+     * Constructs a new CSVReader.
+     */
     public CSVReader(){}
-
+    /**
+     * Checks if the file path exists and is a file.
+     *
+     * @param path The file path.
+     * @return True if the path exists and is a file, false otherwise.
+     */
     public boolean checkPath(String path) {
 
         File file = new File(path);
         return file.exists() && file.isFile();
     }
-
+    /**
+     * Reads a CSV file and returns its contents as a list of rows, where each row is represented as a list of fields.
+     *
+     * @param path      The file path.
+     * @param separator The separator used in the CSV file.
+     * @return The contents of the CSV file as a list of rows.
+     */
     public ArrayList<ArrayList<String>> readCSV(String path,String separator) {
         ArrayList<ArrayList<String>> rows = new ArrayList<>();
 
@@ -47,7 +63,13 @@ public class CSVReader {
         }
         return rows;
     }
-
+    /**
+     * Splits a compound string into its parts based on the specified separator.
+     *
+     * @param line      The compound string.
+     * @param separator The separator used to split the string.
+     * @return An array containing the parts of the compound string.
+     */
     private String[] splitCompound(String line, String separator) {
 
         ArrayList<String> partsList = new ArrayList<>();

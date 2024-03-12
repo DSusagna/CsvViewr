@@ -6,20 +6,39 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The InputView class represents the view component in the MVC pattern.
+ * It provides the graphical user interface for the user to interact with the program.
+ */
 public class InputView extends JFrame {
 
-    private JTextField textField;
-    private JButton jbPrint;
+    /**
+     * Constant representing the action command for printing CSV data.
+     */
     public static final String BTN_PRINT = "BTN_PRINT";
-
+    /**
+     * JTextField for entering the file name.
+     */
+    private JTextField textField;
+    /**
+     * JButton for triggering the CSV printing action.
+     */
+    private JButton jbPrint;
+    /**
+     * Separator used in the CSV file.
+     */
     private String separator;
-
-    String description = "<html>Hello, welcome to the View CSV program. Please follow these steps:<br><br>"
+    /**
+     * HTML-formatted description text displayed in the InputView.
+     */
+    private String description = "<html>Hello, welcome to the View CSV program. Please follow these steps:<br><br>"
             + "Step 1: Save the CSV document inside the 'Files' folder (It's important that the document is in .csv format).<br>"
             + "Step 2: Enter the file name in the upper field; it's not necessary to include the .csv extension.<br>"
             + "Step 3: Press the button, and the table will appear.</html>";
 
-
+    /**
+     * Constructs a new InputView.
+     */
     public InputView() {
         separator = ",";
         configureInput();
@@ -27,6 +46,9 @@ public class InputView extends JFrame {
 
     }
 
+    /**
+     * Configures the input components of the view.
+     */
     private void configureInput() {
         textField = new JTextField(20);
         jbPrint = new JButton("View CSV");
@@ -89,7 +111,9 @@ public class InputView extends JFrame {
         option2.addActionListener(checkBoxListener);
     }
 
-
+    /**
+     * Configures the window settings.
+     */
     private void configureWindow() {
         setTitle("View CSV");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -97,21 +121,37 @@ public class InputView extends JFrame {
         setLocationRelativeTo(null);
     }
 
-
+    /**
+     * Registers a controller to handle button actions.
+     *
+     * @param controller The action listener for the button.
+     */
     public void registerController(ActionListener controller) {
         jbPrint.addActionListener(controller);
         jbPrint.setActionCommand(BTN_PRINT);
     }
 
+    /**
+     * Retrieves the file name entered by the user.
+     *
+     * @return The file name entered by the user.
+     */
     public String getFileName() {
         return textField.getText();
     }
 
+    /**
+     * Displays the input view.
+     */
     public void start() {
         setVisible(true);
     }
 
-
+    /**
+     * Retrieves the selected separator.
+     *
+     * @return The selected separator.
+     */
     public String getSeparator() {
         return separator;
     }
