@@ -34,7 +34,6 @@ public class CSVReader {
                 }
 
                 String[] parts = splitCompound(line,separator);
-
                 ArrayList<String> row = new ArrayList<>();
 
                 for (int i = 0; i < parts.length; i++) {
@@ -58,8 +57,6 @@ public class CSVReader {
             partsList.add(parts[i]);
         }
 
-
-
         for (int i = 0; i < partsList.size(); i++) {
             if (partsList.get(i).startsWith("\"\"")) {
                 if (partsList.get(i).length() >= 2) {
@@ -71,6 +68,20 @@ public class CSVReader {
                         partsList.remove(i + 1);
                     }
                 }
+            } else {
+
+                if (partsList.get(i).startsWith("\"")) {
+                    if (partsList.get(i).length() >= 2) {
+                        partsList.set(i, partsList.get(i).substring(1));
+                        if (i + 1 < partsList.size() && partsList.get(i + 1).length() >= 2) {
+                            partsList.set(i + 1, partsList.get(i + 1).substring(1));
+                            partsList.set(i + 1, partsList.get(i + 1).substring(0, partsList.get(i + 1).length() - 1));
+                            partsList.set(i, partsList.get(i) + ", " + partsList.get(i + 1));
+                            partsList.remove(i + 1);
+                        }
+                    }
+                }
+
             }
         }
         return partsList.toArray(new String[0]);
