@@ -71,4 +71,28 @@ public class OutputView extends JFrame {
                 "Name error",
                 JOptionPane.ERROR_MESSAGE);
     }
+
+    public static void mostrarTextoEnSwing(String texto) {
+
+        JFrame frame = new JFrame("Texto en Swing");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JTextArea textArea = new JTextArea(texto);
+        textArea.setEditable(false);
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+        textArea.setFocusable(true);
+
+        textArea.setRows(textArea.getLineCount());
+        textArea.setColumns(textArea.getPreferredSize().width / textArea.getFontMetrics(textArea.getFont()).charWidth('W'));
+
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        frame.getContentPane().add(scrollPane);
+
+        frame.setSize(600, 100);
+
+        frame.setLocationRelativeTo(null);
+
+        frame.setVisible(true);
+    }
 }
