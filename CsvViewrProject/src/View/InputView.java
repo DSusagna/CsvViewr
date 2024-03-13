@@ -59,7 +59,7 @@ public class InputView extends JFrame {
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
 
         // Imagen
-        ImageIcon originalIcon = new ImageIcon("src/Resources/csv.png");
+        ImageIcon originalIcon = new ImageIcon("CsvViewrProject/Resources/csv.png");
         Image originalImage = originalIcon.getImage();
         Image resizedImage = originalImage.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
         ImageIcon resizedIcon = new ImageIcon(resizedImage);

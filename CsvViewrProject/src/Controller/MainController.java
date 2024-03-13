@@ -69,6 +69,7 @@ public class MainController implements ActionListener {
         if (!fileName.endsWith(".csv")) {
             fileName += ".csv";
         }
-        return "Files/" + fileName;
+        return "CsvViewrProject/Files/" + fileName;
+
     }
 }
