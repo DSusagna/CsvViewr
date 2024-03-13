@@ -24,6 +24,7 @@ public class CSVReader {
     public boolean checkPath(String path) {
 
         File file = new File(path);
+
         return file.exists() && file.isFile();
     }
     /**

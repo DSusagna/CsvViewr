@@ -34,7 +34,7 @@ javac *.java
 
 2. Run the application
 
-java Main
+java main.Main
 Enter the file name (without the .csv extension) in the text field.
 
 3. Click the "View CSV" button to display the CSV data in a table.

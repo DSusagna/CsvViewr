@@ -1,3 +1,4 @@
+package main;
 
 import Controller.MainController;
 import Model.InputModel;
@@ -8,9 +9,9 @@ import javax.swing.*;
 
 import static javax.swing.SwingUtilities.*;
 /**
- * File: Main.java
+ * File: main.Main.java
  * ----------------
- * Description: This file contains the Main class, which serves as the main entry point of the program.
+ * Description: This file contains the main.Main class, which serves as the main entry point of the program.
  *              It initializes the MVC components and launches the application.
  */
 public class Main {

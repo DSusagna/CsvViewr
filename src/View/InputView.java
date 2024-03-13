@@ -5,6 +5,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
+import View.InputView;
 
 /**
  * The InputView class represents the view component in the MVC pattern.
@@ -59,7 +61,7 @@ public class InputView extends JFrame {
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
 
         // Imagen
-        ImageIcon originalIcon = new ImageIcon("CsvViewrProject/Resources/csv.png");
+        ImageIcon originalIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/csv.png")));
         Image originalImage = originalIcon.getImage();
         Image resizedImage = originalImage.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
         ImageIcon resizedIcon = new ImageIcon(resizedImage);
