@@ -2,7 +2,6 @@ package View;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
@@ -12,6 +11,8 @@ import java.util.ArrayList;
  * The OutputView class represents the view component responsible for displaying the CSV data.
  */
 public class OutputView extends JFrame {
+
+    private JLabel messageLabel;
 
     /**
      * Constructs a new OutputView.
@@ -83,10 +84,13 @@ public class OutputView extends JFrame {
                 JOptionPane.ERROR_MESSAGE);
     }
 
-    public static void mostrarTextoEnSwing(String texto) {
 
-        JFrame frame = new JFrame("Texto en Swing");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
+    public static void debugMessage(String texto) {
+
+        JFrame frame = new JFrame("Debug Message");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         JTextArea textArea = new JTextArea(texto);
         textArea.setEditable(false);

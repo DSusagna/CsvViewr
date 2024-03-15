@@ -1,15 +1,13 @@
 package Model;
 
+import View.ExceptionDialog;
 import View.OutputView;
 
-import java.awt.*;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * The CSVReader class is responsible for reading CSV files.
@@ -30,8 +28,6 @@ public class CSVReader {
      */
     public ArrayList<ArrayList<String>> readCSV(String path,String separator) {
         ArrayList<ArrayList<String>> rows = new ArrayList<>();
-
-        OutputView.mostrarTextoEnSwing(path);
 
         try (BufferedReader reader = new BufferedReader(new FileReader(path, StandardCharsets.UTF_8))) {
 
@@ -55,14 +51,11 @@ public class CSVReader {
                 for (int i = 0; i < parts.length; i++) {
                     String field = parts[i].trim();
                     row.add(field);
-                    OutputView.mostrarTextoEnSwing(field);
                 }
                 rows.add(row);
-
-
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            new ExceptionDialog(e.getMessage());
         }
         return rows;
     }

@@ -49,14 +49,11 @@ public class MainController implements ActionListener {
                 String path = getPathFromName(fileName);
 
                 if (pathExists(path)){
-
-
                     File file = new File(path);
                     if (!file.canRead()) {
                         outputView.errorPermissions(path);
                     } else {
                         outputView.printCsv(inputmodel.readCsv(path,inputView.getSeparator()),fileName);
-
                     }
                 } else {
                     outputView.errorPath();
