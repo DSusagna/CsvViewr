@@ -1,5 +1,7 @@
 package Model;
 
+import View.OutputView;
+
 import java.io.File;
 import java.util.ArrayList;
 /**
@@ -21,12 +23,14 @@ public class InputModel {
     /**
      * Reads the contents of a CSV file.
      *
-     * @param fileName  The name of the CSV file.
+     * @param path  The name of the CSV file.
      * @param separator The separator used in the CSV file.
      * @return A list of rows, where each row is represented as a list of fields.
      */
-    public ArrayList<ArrayList<String>> readCsv(String fileName, String separator){
-        return csvReader.readCSV(fileName,separator);
+    public ArrayList<ArrayList<String>> readCsv(String path, String separator){
+
+        return csvReader.readCSV(path,separator);
+
     }
 
 

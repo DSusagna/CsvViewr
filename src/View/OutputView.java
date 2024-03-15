@@ -67,8 +67,19 @@ public class OutputView extends JFrame {
      */
     public void errorPath() {
         JOptionPane.showMessageDialog(this,
-                "Make sure the document is within the \"Files\" folder\n(.csv) extension is not necessary.",
+                "Make sure the path is exact or the file is located in the same folder as the ejutable" +
+                        "\n(.csv) extension is not necessary.",
                 "Name error",
+                JOptionPane.ERROR_MESSAGE);
+    }
+
+    /**
+     * Displays an error message indicating that the file path is incorrect.
+     */
+    public void errorPermissions(String path) {
+        JOptionPane.showMessageDialog(this,
+                "You do not have permissions to read the file: "+path,
+                "Permissions error",
                 JOptionPane.ERROR_MESSAGE);
     }
 

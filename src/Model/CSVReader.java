@@ -2,10 +2,12 @@ package Model;
 
 import View.OutputView;
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +19,7 @@ public class CSVReader {
      * Constructs a new CSVReader.
      */
     public CSVReader(){}
+
 
     /**
      * Reads a CSV file and returns its contents as a list of rows, where each row is represented as a list of fields.
@@ -30,7 +33,7 @@ public class CSVReader {
 
         OutputView.mostrarTextoEnSwing(path);
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(path, StandardCharsets.UTF_8))) {
 
             String line;
 
@@ -52,6 +55,7 @@ public class CSVReader {
                 for (int i = 0; i < parts.length; i++) {
                     String field = parts[i].trim();
                     row.add(field);
+                    OutputView.mostrarTextoEnSwing(field);
                 }
                 rows.add(row);
 
