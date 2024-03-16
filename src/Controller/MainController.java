@@ -3,11 +3,13 @@ package Controller;
 import Model.InputModel;
 import View.InputView;
 import View.OutputView;
-
+import java.io.File;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.annotation.ElementType;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.net.URI;
 /**
  * The MainController class serves as the controller in the MVC pattern.
  * It handles user actions from the InputView and interacts with the InputModel and OutputView accordingly.
@@ -43,11 +45,17 @@ public class MainController implements ActionListener {
         switch (e.getActionCommand()) {
             case InputView.BTN_PRINT:
 
-                String path = addCsvExtensionIfNeeded(inputView.getFileName());
-
-
-                if(inputmodel.checkPath(path)){
-                    outputView.printCsv(inputmodel.readCsv(path,inputView.getSeparator()),path);
+                String fileName = addCsvExtensionIfNeeded(inputView.getFileName());
+                //String path = getPathFromName(fileName);
+                String path = fileName;
+                OutputView.debugMessage(path);
+                if (pathExists(path)){
+                    File file = new File(path);
+                    if (!file.canRead()) {
+                        outputView.errorPermissions(path);
+                    } else {
+                        outputView.printCsv(inputmodel.readCsv(path,inputView.getSeparator()),fileName);
+                    }
                 } else {
                     outputView.errorPath();
                 }
@@ -59,6 +67,21 @@ public class MainController implements ActionListener {
 
     }
 
+    private String getPathFromName(String fileName) {
+
+        String path = null;
+        try {
+            String currentPath = new File(getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParent();
+            path = new File(currentPath, fileName).getPath();
+        } catch (URISyntaxException e) {
+            outputView.errorPath();
+            e.printStackTrace();
+        }
+
+        return path;
+    }
+
+
     /**
      * Adds the ".csv" extension to the file name if it's missing.
      *
@@ -66,10 +89,17 @@ public class MainController implements ActionListener {
      * @return The file name with the ".csv" extension added if needed.
      */
     public String addCsvExtensionIfNeeded(String fileName) {
+
+        fileName = "/"+fileName;
+
         if (!fileName.endsWith(".csv")) {
             fileName += ".csv";
         }
-        //return "CsvViewrProject/Files/" + fileName;
         return fileName;
+    }
+
+    private boolean pathExists(String path) {
+        File file = new File(path);
+        return file.exists();
     }
 }

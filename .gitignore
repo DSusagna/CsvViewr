@@ -53,3 +53,4 @@ nbproject/
 
 # Incluir archivos CSV
 *.csv
+*.DS_Store

@@ -1,11 +1,13 @@
 package Model;
 
+import View.ExceptionDialog;
+import View.OutputView;
+
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * The CSVReader class is responsible for reading CSV files.
@@ -15,29 +17,20 @@ public class CSVReader {
      * Constructs a new CSVReader.
      */
     public CSVReader(){}
-    /**
-     * Checks if the file path exists and is a file.
-     *
-     * @param path The file path.
-     * @return True if the path exists and is a file, false otherwise.
-     */
-    public boolean checkPath(String path) {
 
-        File file = new File(path);
 
-        return file.exists() && file.isFile();
-    }
     /**
      * Reads a CSV file and returns its contents as a list of rows, where each row is represented as a list of fields.
      *
-     * @param path      The file path.
+
      * @param separator The separator used in the CSV file.
      * @return The contents of the CSV file as a list of rows.
      */
     public ArrayList<ArrayList<String>> readCSV(String path,String separator) {
         ArrayList<ArrayList<String>> rows = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(path, StandardCharsets.UTF_8))) {
+
             String line;
 
             while ((line = reader.readLine()) != null) {
@@ -53,6 +46,8 @@ public class CSVReader {
                 String[] parts = splitCompound(line,separator);
                 ArrayList<String> row = new ArrayList<>();
 
+
+
                 for (int i = 0; i < parts.length; i++) {
                     String field = parts[i].trim();
                     row.add(field);
@@ -60,7 +55,7 @@ public class CSVReader {
                 rows.add(row);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            new ExceptionDialog(e.getMessage());
         }
         return rows;
     }

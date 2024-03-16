@@ -2,7 +2,6 @@ package View;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
@@ -12,6 +11,8 @@ import java.util.ArrayList;
  * The OutputView class represents the view component responsible for displaying the CSV data.
  */
 public class OutputView extends JFrame {
+
+    private JLabel messageLabel;
 
     /**
      * Constructs a new OutputView.
@@ -67,8 +68,46 @@ public class OutputView extends JFrame {
      */
     public void errorPath() {
         JOptionPane.showMessageDialog(this,
-                "Make sure the document is within the \"Files\" folder\n(.csv) extension is not necessary.",
+                "Make sure the path is exact or the file is located in the same folder as the ejutable" +
+                        "\n(.csv) extension is not necessary.",
                 "Name error",
                 JOptionPane.ERROR_MESSAGE);
+    }
+
+    /**
+     * Displays an error message indicating that the file path is incorrect.
+     */
+    public void errorPermissions(String path) {
+        JOptionPane.showMessageDialog(this,
+                "You do not have permissions to read the file: "+path,
+                "Permissions error",
+                JOptionPane.ERROR_MESSAGE);
+    }
+
+
+
+
+    public static void debugMessage(String texto) {
+
+        JFrame frame = new JFrame("Debug Message");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        JTextArea textArea = new JTextArea(texto);
+        textArea.setEditable(false);
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+        textArea.setFocusable(true);
+
+        textArea.setRows(textArea.getLineCount());
+        textArea.setColumns(textArea.getPreferredSize().width / textArea.getFontMetrics(textArea.getFont()).charWidth('W'));
+
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        frame.getContentPane().add(scrollPane);
+
+        frame.setSize(600, 100);
+
+        frame.setLocationRelativeTo(null);
+
+        frame.setVisible(true);
     }
 }
