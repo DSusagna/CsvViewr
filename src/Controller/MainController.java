@@ -46,8 +46,9 @@ public class MainController implements ActionListener {
             case InputView.BTN_PRINT:
 
                 String fileName = addCsvExtensionIfNeeded(inputView.getFileName());
-                String path = getPathFromName(fileName);
-
+                //String path = getPathFromName(fileName);
+                String path = fileName;
+                OutputView.debugMessage(path);
                 if (pathExists(path)){
                     File file = new File(path);
                     if (!file.canRead()) {
