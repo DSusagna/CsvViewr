@@ -1,48 +1,45 @@
 # CSV Viewer
 
-CSV Viewer is a simple Java application that allows users to view CSV files in a graphical user interface.
+## Ejecución en macOS
 
-## Features
+### Instalación de Git (si no está instalado)
 
-- **CSV File Viewing**: Load and display CSV files in a tabular format.
-- **Customizable Separator**: Choose the separator character used in the CSV file (default is comma ',').
-- **Instructions**: Step-by-step instructions guide users on how to use the application effectively.
-- **Resizable Columns**: Table columns can be resized for better visibility.
-- **Error Handling**: Provides error messages when encountering invalid file paths or other issues.
+Si Git no está instalado, sigue estos pasos previos:
 
-## Getting Started
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install git
+```
 
-### Prerequisites
+## Ejecución del proyecto
 
-- Java Development Kit (JDK) installed on your machine.
+Una vez instalado Git, sigue estas instrucciones para ejecutar el proyecto:
 
-### Installation
+```bash
+git clone git@github.com:DSusagna/CsvViewr.git
+cd CsvViewr
+chmod +x runMacOS.sh
+sudo ./runMacOS.sh
+```
 
-1. Clone the repository to your local machine:
+## Ejecución en Windows
 
-   bash
-   git clone https://github.com/your-username/csv-viewer.git
+### Instalación de Git (si no está instalado)
 
-2. Compile the Java files:
+Si Git no está instalado, sigue estos pasos previos:
 
-cd csv-viewer
-javac *.java
+```bash
+curl -o git-installer.exe -L https://github.com/git-for-windows/git/releases/download/v2.35.1.windows.2/Git-2.35.1.2-64-bit.exe
+git-installer.exe /SILENT
+del git-installer.exe
+```
 
+## Ejecución del proyecto
 
-### Usage
-1. Ensure your CSV file is located in the Files directory within the project.
+Una vez instalado Git, ejecuta las siguientes líneas en la terminal:
 
-2. Run the application
-
-java main.Main
-Enter the file name (without the .csv extension) in the text field.
-
-3. Click the "View CSV" button to display the CSV data in a table.
-
-### Contributing
-Contributions are welcome! Please feel free to submit bug reports, feature requests, or pull requests.
-
-
-### Acknowledgments
-This project was inspired by the need for a simple CSV viewer tool.
-Special thanks to OpenCSV for providing a reliable CSV parsing library.
+```bash
+git clone git@github.com:DSusagna/CsvViewr.git
+cd CsvViewr
+call runWindows.bat
+```
